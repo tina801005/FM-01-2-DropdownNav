@@ -1,0 +1,38 @@
+/* 重製標籤默認樣式 */
+@charset "utf-8";
+
+/* --------------------重置樣式-------------------------------- */
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+blockquote,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+button,
+input,
+textarea,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  background-color: transparent;
+}
+a:hover,
+a:active {
+  outline-width: 0;
+  text-decoration: none;
+}

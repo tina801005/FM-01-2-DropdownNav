@@ -1,0 +1,12 @@
+:root{
+/* color */
+--color-background:hsl(0, 0%, 98%);
+--color-primary:hsl(0, 0%, 8%);
+--color-secondary:hsl(0, 0%, 41%);
+
+/* font */
+--primary-font-family: "Epilogue", sans-serif;
+--500-font-weight: 500;
+--700-font-weight: 700;
+--18-font-size: 18px;
+}
