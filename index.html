@@ -15,7 +15,110 @@
   <!-- 主要樣式-style.css -->
   <link rel="stylesheet" href="./css/style.css">
   <!-- 樣式測試 -->
-  <style></style>
+  <style>
+    .top-content {
+      border: 1px solid red;
+      display: flex;
+      align-items: center;
+      
+    }
+    .top-content .logo {
+      display: grid;
+      place-items: center; /* 置中對齊 */
+    }
+
+    .top-content .nav {
+      border: 1px solid green;
+      display: flex; 
+      justify-content: space-between; /* 主軸置中對齊 */
+      flex: 1; /* 讓nav撐滿剩餘空間 */
+      margin-left: 32px; /* logo與nav間距 */
+      color: var(--color-secondary);
+    }
+    .top-content .nav .menu{
+      border: 1px solid orange;
+      display: flex;
+      gap: 35px;
+    }
+    .top-content .nav .menu li{
+      position: relative; /* 讓下拉選單絕對定位參考點為li */
+    } 
+    .top-content .nav .menu li:hover{
+      color: var(--color-primary);
+      /* background-color: lightgray; */
+    }
+    .top-content .nav .menu li>h3{
+      font-weight: normal;
+      cursor: pointer;
+    }
+    .top-content .nav .menu li>h3::after{
+      content: url(./images/icon-arrow-down.svg);
+      display: inline-block;
+      margin-left: 8px;
+      vertical-align: text-top;
+      
+    }
+    .top-content .nav .menu li> h3:hover::after{
+      content: url(./images/icon-arrow-up.svg);
+      display: inline-block;
+      margin-left: 8px;
+      vertical-align: text-top;
+    }
+    
+    .top-content .nav .menu li .menu-dropdown{
+      /* 選單主體樣式 */
+      background-color: hsl(0, 0%, 100%);
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      gap: 12px;
+      /* 下拉選單樣式 */
+      position: absolute; /* 讓下拉選單脫離文檔流 */
+      /* border: 1px solid violet; */
+      left: 0;
+      right: 0;
+      top: 25px;
+      text-align: center;
+      transform-origin: top center; /* 設定縮放的基準點 */
+      transform: scaleY(0); /* 預設縮放為0 */
+      transition: transform 0.3s; /* 加入過渡效果 */
+      padding-top: 2px;
+      padding-bottom: 8px;
+    }
+    .top-content .nav .menu li:hover .menu-dropdown{
+      transform: scaleY(1); /* 滑鼠移入時縮放為1 */
+    }
+
+    /* menu-item-features */
+    .top-content .nav .menu li .features{
+      width: 150px;
+      left: -40px;
+      padding-top: 16px ;
+      padding-bottom: 16px ;
+      padding-right: 24px ;
+    }
+    .top-content .nav .menu li .company{
+      width: 120px;
+    }
+    .top-content .nav .menu li .features dt a{
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 500;
+    }
+    .top-content .nav .menu li .menu-item{
+      padding:16px 
+    }
+
+    .top-content .nav .user{
+      border: 1px solid purple;
+      display: inline-block;
+    }
+
+  </style>
 
   <!-- 網格系統-gridSystem.css -->
   <link rel="stylesheet" href="./css/gridsystem.css">
@@ -42,9 +145,20 @@
           <ul class="menu">
             <li>
               <h3>Features</h3>
+              <dl class="menu-dropdown menu-item features">
+                <dt><a href="#"><span class="menu-dropdown_icon"><img src="./images/icon-todo.svg" alt="icon todo-list"></span>Todo List</a></dt>
+                <dt><a href="#"><span class="menu-dropdown_icon"><img src="./images/icon-calendar.svg" alt="icon calendar"></span>Calendar</a></dt>
+                <dt><a href="#"><span class="menu-dropdown_icon"><img src="./images/icon-reminders.svg" alt="icon reminders"></span>Reminders</a></dt>
+                <dt><a href="#"><span class="menu-dropdown_icon"><img src="./images/icon-planning.svg" alt="icon planning"></span>Planning</a></dt>
+              </dl>
             </li>
             <li>
               <h3>Company</h3>
+              <dl class="menu-dropdown menu-item company">
+                <dt><a href="#">History</a></dt>
+                <dt><a href="#">Our Team</a></dt>
+                <dt><a href="#">Blog</a></dt>
+              </dl>
             </li>
             <li>
               <a href="#">Careers</a>
