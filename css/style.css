@@ -1,14 +1,158 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+
 html{
     padding: 20px 35px;
 }
 body{
     background-color: var(--color-background);
     font-size: var(--18-font-size);
-    font-weight: var(--500-font-weight);
     font-family: var(--primary-font-family);
 }
+.top-content {
+    border: 1px solid red;
+    display: flex;
+    align-items: center;
+    
+}
+.top-content .logo {
+    display: grid;
+    place-items: center; /* 置中對齊 */
+}
+
+/* 水平導覽樣式開始 */
+
+.top-content .nav {
+    display: none; 
+    justify-content: space-between; /* 主軸置中對齊 */
+    align-items: center;
+    flex: 1; /* 讓nav撐滿剩餘空間 */
+    margin-left: 32px; /* logo與nav間距 */
+    color: var(--color-secondary);
+}
+.top-content .nav .menu{
+    display: flex;
+    gap: 35px;
+}
+.top-content .nav .menu li{
+    position: relative; /* 讓下拉選單絕對定位參考點為li */
+} 
+.top-content .nav .menu li:hover{
+    color: var(--color-primary);
+}
+.top-content .nav .menu li>h3{
+    font-weight: normal;
+    cursor: pointer;
+    font-size: var(--18-font-size);
+    font-weight: 400;
+}
+.top-content .nav .menu li>h3::after{
+    content: url(/images/icon-arrow-down.svg);
+    display: inline-block;
+    margin-left: 8px;
+    vertical-align: text-top;
+}
+.top-content .nav .menu li>h3:hover::after{
+    content: url(/images/icon-arrow-up.svg);
+}
+
+.top-content .nav .menu li .menu-dropdown{
+    /* 選單主體樣式 */
+    background-color: hsl(0, 0%, 100%);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 12px;
+    /* 下拉選單樣式 */
+    position: absolute; /* 讓下拉選單脫離文檔流 */
+    left: 0;
+    right: 0;
+    top: 25px;
+    text-align: center;
+    transform-origin: top center; /* 設定縮放的基準點 */
+    transform: scaleY(0); /* 預設縮放為0 */
+    transition: transform 0.3s; /* 加入過渡效果 */
+    padding-top: 2px;
+    padding-bottom: 8px;
+}
+.top-content .nav .menu li:hover .menu-dropdown{
+    transform: scaleY(1); /* 滑鼠移入時縮放為1 */
+}
+
+/* menu-item-features */
+.top-content .nav .menu li .features{
+    width: 120px;
+    left: -40px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-right: 14px;
+}
+.top-content .nav .menu li .company{
+    width: 90px;
+}
+.top-content .nav .menu li .features dt a , 
+.top-content .nav .menu li .company dt a{
+    font-size: var(--18-font-size);
+    font-weight: 500;
+    color: var(--color-secondary);
+    font-weight: 400;
+} 
+
+.top-content .nav .menu li .features dt a{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.top-content .nav .menu li .features dt a:hover , 
+.top-content .nav .menu li .company dt a:hover{
+    color: var(--color-primary);
+}
+
+
+.top-content .nav .menu li .menu-item{
+    padding:16px 
+}
+.top-content .nav .menu li .menu-item a{
+    font-size: var(--18-font-size);
+    font-weight: 400;
+    color: var(--color-secondary);
+}
+
+.top-content .nav .user{
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+.top-content .nav .user a{
+    font-size: var(--18-font-size);
+    font-weight: 400;
+    color: var(--color-secondary);
+    text-align: center;
+    display: block;
+    padding: 10px 16px;
+    border-radius: 10px;
+}
+.top-content .nav .user .register-btn{
+    border: 2px solid var(--color-secondary);
+}
+.top-content .nav .user .register-btn:hover{
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.top-content .nav .user .login-btn:hover{
+    color: var(--color-primary);
+}
+/* 水平導覽樣式結束 */
+
+/* 垂直選單icon樣式開始 */
+/* .nav-button{
+    display: none;
+    margin-left: auto;
+    cursor: pointer;
+} */
+
+/* 垂直導覽樣式開始 */
+/* 垂直導覽樣式結束 */
