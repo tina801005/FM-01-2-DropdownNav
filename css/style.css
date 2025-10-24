@@ -8,7 +8,6 @@ body{
     font-family: var(--primary-font-family);
 }
 .top-content {
-    border: 1px solid red;
     display: flex;
     align-items: center;
     
@@ -20,8 +19,8 @@ body{
 
 /* 水平導覽樣式開始 */
 
-.top-content .nav {
-    display: none; 
+.top-content .nav, .top-content .mobile-nav {
+    display: flex; 
     justify-content: space-between; /* 主軸置中對齊 */
     align-items: center;
     flex: 1; /* 讓nav撐滿剩餘空間 */
@@ -35,46 +34,44 @@ body{
 .top-content .nav .menu li{
     position: relative; /* 讓下拉選單絕對定位參考點為li */
 } 
-.top-content .nav .menu li:hover{
+.top-content .nav .menu li:hover ,.top-content .mobile-nav .mobile-menu li:hover{
     color: var(--color-primary);
 }
-.top-content .nav .menu li>h3{
+.top-content .nav .menu li>h3,.top-content .mobile-nav .mobile-menu li>h3{
     font-weight: normal;
     cursor: pointer;
     font-size: var(--18-font-size);
     font-weight: 400;
 }
-.top-content .nav .menu li>h3::after{
+.top-content .nav .menu li>h3::after {
     content: url(/images/icon-arrow-down.svg);
     display: inline-block;
     margin-left: 8px;
     vertical-align: text-top;
 }
-.top-content .nav .menu li>h3:hover::after{
+.top-content .nav .menu li>h3:hover::after  {
     content: url(/images/icon-arrow-up.svg);
 }
+/* .top-content .mobile-nav .mobile-menu li>h3:hover::after */
 
-.top-content .nav .menu li .menu-dropdown{
+.top-content .nav .menu li .menu-dropdown {
     /* 選單主體樣式 */
     background-color: hsl(0, 0%, 100%);
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    text-align: left;
     display: flex;
     flex-direction: column;
     align-items: start;
     gap: 12px;
     /* 下拉選單樣式 */
     position: absolute; /* 讓下拉選單脫離文檔流 */
-    left: 0;
     right: 0;
     top: 25px;
     text-align: center;
     transform-origin: top center; /* 設定縮放的基準點 */
     transform: scaleY(0); /* 預設縮放為0 */
     transition: transform 0.3s; /* 加入過渡效果 */
-    padding-top: 2px;
-    padding-bottom: 8px;
+
 }
 .top-content .nav .menu li:hover .menu-dropdown{
     transform: scaleY(1); /* 滑鼠移入時縮放為1 */
@@ -83,36 +80,44 @@ body{
 /* menu-item-features */
 .top-content .nav .menu li .features{
     width: 120px;
-    left: -40px;
-    padding-top: 16px;
-    padding-bottom: 16px;
-    padding-right: 14px;
+    top: 30px;
+    right: 0; 
+}
+.top-content .nav .menu li .features dt a>span{
+    display: block; 
+    width: 15px;
 }
 .top-content .nav .menu li .company{
     width: 90px;
+    top: 30px;
+    left: 0px;
 }
 .top-content .nav .menu li .features dt a , 
-.top-content .nav .menu li .company dt a{
+.top-content .nav .menu li .company dt a,
+.top-content .mobile-nav .mobile-menu li .features dt a ,
+.top-content .mobile-nav .mobile-menu li .company dt a{
     font-size: var(--18-font-size);
-    font-weight: 500;
     color: var(--color-secondary);
     font-weight: 400;
 } 
 
-.top-content .nav .menu li .features dt a{
+.top-content .nav .menu li .features dt a ,
+.top-content .mobile-nav .mobile-menu li .features dt a{
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
 .top-content .nav .menu li .features dt a:hover , 
-.top-content .nav .menu li .company dt a:hover{
+.top-content .nav .menu li .company dt a:hover,
+.top-content .mobile-nav .mobile-menu li .features dt a:hover ,
+.top-content .mobile-nav .mobile-menu li .company dt a:hover{
     color: var(--color-primary);
 }
 
 
 .top-content .nav .menu li .menu-item{
-    padding:16px 
+    padding:10px 16px;
 }
 .top-content .nav .menu li .menu-item a{
     font-size: var(--18-font-size);
@@ -125,7 +130,8 @@ body{
     align-items: center;
     gap: 24px;
 }
-.top-content .nav .user a{
+.top-content .nav .user a,.top-content .mobile-nav .mobile-user a{
+    width: 100%;
     font-size: var(--18-font-size);
     font-weight: 400;
     color: var(--color-secondary);
@@ -134,25 +140,175 @@ body{
     padding: 10px 16px;
     border-radius: 10px;
 }
-.top-content .nav .user .register-btn{
+.top-content .nav .user .register-btn ,
+.top-content .mobile-nav .mobile-user .mobile-register-btn{
     border: 2px solid var(--color-secondary);
 }
-.top-content .nav .user .register-btn:hover{
+
+.top-content .nav .user .register-btn:hover,
+.top-content .mobile-nav .mobile-user .mobile-register-btn:hover{
     border-color: var(--color-primary);
     color: var(--color-primary);
 }
 
-.top-content .nav .user .login-btn:hover{
+.top-content .nav .user .login-btn:hover,
+.top-content .mobile-nav .mobile-user .mobile-login-btn:hover{
     color: var(--color-primary);
 }
 /* 水平導覽樣式結束 */
 
-/* 垂直選單icon樣式開始 */
-/* .nav-button{
+/* 垂直導覽樣式開始 */
+ .nav-button{
     display: none;
     margin-left: auto;
     cursor: pointer;
-} */
+}
+.mask{
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0,0, 0, 0.6);
+}
+.top-content .mobile-nav{
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 30%;
+    height: 100vh;
+    background-color: hsl(0, 0%, 100%);
+    padding: 2rem;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    z-index: 10;
+}
+.top-content .mobile-nav .mobile-user{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 4rem;
+}
 
-/* 垂直導覽樣式開始 */
+.top-content .mobile-nav .mobile-menu{
+    display: flex;
+    flex-direction: column;
+    margin-top: 4rem;
+}
+
+/* mobile nav close button */
+.top-content .mobile-nav .mobile-nav_close-btn{
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+}
+.top-content .mobile-nav .mobile-nav_close-btn img{
+    width: 100%;
+    height: 100%;
+}
+/* 二階選單 */
+.top-content .mobile-nav .mobile-menu{
+    display: grid;
+    row-gap: 1.5rem;
+}
+.top-content .mobile-nav .mobile-menu li .mobile-menu-dropdown{
+    /* 選單主體樣式 */
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 8px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    /* 下拉選單樣式 */
+    padding: 1rem;
+    display: none; /* 預設隱藏 */
+}
+.top-content .mobile-nav .mobile-menu li .features dt{
+    display: block;  
+    width: 130px;
+    padding-top: 16px;
+}
+.top-content .mobile-nav .mobile-menu li .features dt a>span{
+    display: block; 
+    width: 15px;
+}
+
+.top-content .mobile-nav .mobile-menu li .company dt{
+    display: block; 
+    width: 90px;
+    padding-top: 16px;
+}
 /* 垂直導覽樣式結束 */
+
+/* 內文+圖 開始 */
+.main{
+    width: 85%;
+    height: 550px;
+    margin: 0 auto;
+    position: relative;
+    margin-top: 80px;
+}
+.main-article{
+    width: 54%;
+    height: 90%;
+    float: left;
+    position: absolute;
+    top: 10%;
+}
+.main-image{
+    height: 100%;
+    float: right;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.headline{
+    height: 85%;
+    padding: 0 20px;
+}
+.main-article .headline h1{
+    font-size: 68px;
+    line-height: 72px;
+    margin-bottom: 24px;
+}
+.main-article .headline p{
+    width: 70%;
+    font-size: 15px;
+    line-height: 24px;
+    color: var(--color-secondary);
+    margin-bottom: 32px;
+    font-weight: 500;
+}
+
+.main .main-article .headline .more-btn{
+    display: inline-block;
+    color: var(--color-background);
+    background-color: var(--color-primary);
+    padding: 15px 24px;
+    border-radius: 15px;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.client-logo .client-logo_item{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 34px;
+}
+
+/* section-image */
+.main .main-image{
+    background-image: url(/images/image-hero-desktop.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 45%;
+}
+/* 內文+圖 結束 */

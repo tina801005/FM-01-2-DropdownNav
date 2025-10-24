@@ -16,15 +16,13 @@
   <link rel="stylesheet" href="./css/style.css">
   <!-- 樣式測試 -->
   <style>
-    .nav-button{
-        display: block;
-        margin-left: auto;
-        cursor: pointer;
-    }
+    
   </style>
 
   <!-- 網格系統-gridSystem.css -->
   <link rel="stylesheet" href="./css/gridsystem.css">
+  <!-- 媒體查詢 media.css -->
+  <link rel="stylesheet" href="./css/media.css">
 
   <title>Frontend Mentor | Intro section with dropdown navigation</title>
 
@@ -45,7 +43,7 @@
         <!-- logo end -->
 
         <!-- burger menu icon start -->
-        <div class="nav-button">
+        <div class="nav-button" id="J_nav-button">
           <img src="./images/icon-menu.svg" alt="burger menu icon">
         </div>
         <!-- burger menu icon end -->
@@ -84,29 +82,80 @@
         </nav>
         <!-- row-nav end -->
 
-
+        <!-- mobile-nav start -->
+        <nav class="mobile-nav" id="J_mobile-nav">
+          <!-- close button -->
+          <div class="mobile-nav_close-btn" id="J_mobile-nav_close-btn">
+            <img src="/images/icon-close-menu.svg" alt="icon close menu">
+          </div>
+          <!-- mobile menu -->
+          <ul class="mobile-menu" id="J_moblie-menu">
+            <li>
+              <h3>Features
+                <span><img src="/images/icon-arrow-down.svg" id="icon-arrow" alt="icon-arrow-down"></span>
+              </h3>
+              <dl class="mobile-menu-dropdown mobile-menu-item features">
+                <dt><a href="#"><span class="mobile-menu-dropdown_icon"><img src="./images/icon-todo.svg" alt="icon todo-list"></span>Todo List</a></dt>
+                <dt><a href="#"><span class="mobile-menu-dropdown_icon"><img src="./images/icon-calendar.svg" alt="icon calendar"></span>Calendar</a></dt>
+                <dt><a href="#"><span class="mobile-menu-dropdown_icon"><img src="./images/icon-reminders.svg" alt="icon reminders"></span>Reminders</a></dt>
+                <dt><a href="#"><span class="mobile-menu-dropdown_icon"><img src="./images/icon-planning.svg" alt="icon planning"></span>Planning</a></dt>
+              </dl>
+            </li>
+            <li>
+              <h3>Company
+                <span><img src="/images/icon-arrow-down.svg" id="icon-arrow" alt="icon-arrow-down"></span>
+              </h3>
+              <dl class="mobile-menu-dropdown mobile-menu-item company">
+                <dt><a href="#">History</a></dt>
+                <dt><a href="#">Our Team</a></dt>
+                <dt><a href="#">Blog</a></dt>
+              </dl>
+            </li>
+            <li>
+              <a href="#">Careers</a>
+            </li>
+            <li>
+              <a href="#">About</a>
+            </li>
+          </ul>
+          <div class="mobile-user">
+            <a class="mobile-login-btn" href="#">Login</a>
+            <a class="mobile-register-btn" href="#">Register</a>
+          </div>
+        <!-- mobile-nav end -->
       </div>
     </div>
   </header>
+  <!-- mask start -->
+  <div class="mask" id="J_mask"></div>
+  <!-- mask end -->
+
+  <!-- main start -->
+   <main class="main">
+    <article class="main-article">
+      <div class="headline">
+        <h1>Make<br>remote work</h1>
+        <p>Get your team in sync, no matter your location. Streamline processes, 
+    create team rituals, and watch productivity soar.</p>
+        <a class="more-btn" href="#">Learn more</a>
+      </div>
+      <div class="client-logo">
+        <ul class="client-logo_item">
+          <li><img src="./images/client-databiz.svg" alt="client databiz"></li>
+          <li><img src="./images/client-audiophile.svg" alt="client audiophile"></li>
+          <li><img src="./images/client-meet.svg" alt="client meet"></li>
+          <li><img src="./images/client-maker.svg" alt="client maker"></li>
+        </ul>
+      </div>
+    </article>
+    <section class="main-image"></section>
+   </main>
+  <!-- main end -->
   <!-- 
-  
-  
-  
-
-  
-  
-
-  Make remote work
-
-  Get your team in sync, no matter your location. Streamline processes, 
-  create team rituals, and watch productivity soar.
-
-  Learn more
-  
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="#">Your Name Here</a>.
   </div> -->
-  <script></script>
+  <script src="./js/mobilemenu.js"></script>
 </body>
 </html>
